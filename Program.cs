@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Drawing;
 
 enum MenuMain{
     Register = 1,
@@ -23,6 +24,9 @@ enum RentDays{
 class Program{
     private List<Person> personList;
     static PersonList list;
+    private const int OutputImageSize = 256;
+    private const string OutputImageFilePath = "output.bmp";
+    private static Random rnd = new Random();
 
     public static void Main(){
         LoadPersonList();
@@ -71,14 +75,14 @@ class Program{
 
     static void SwitchRegisMenu(RegisterMenu regis){
         switch(regis){
-            case RegisterMenu.Customer : CreateCustimerAccout();
+            case RegisterMenu.Customer : CreateCustomerAccout();
             break;
             case RegisterMenu.Admin : CreateAdminAccout();
             break;
         }
     }
-
-    static void CreateCustimerAccout(){
+    
+    static void CreateCustomerAccout(){
         Console.Clear();
 
         string username = GetInputUserName();
@@ -90,13 +94,12 @@ class Program{
             Program.list.AddUser(customer);
             PrintMenu();
         } else if (account == false){
-            Console.Clear();
             Console.WriteLine(" Please input again");
             Console.ReadLine();
 
-            CreateCustimerAccout();
+            CreateCustomerAccout();
         }
-        
+
     }
 
     static void CreateAdminAccout(){
@@ -137,6 +140,8 @@ class Program{
             }
         }
     }
+
+    
 
     // InfomationPart**********
      static void CustomerMenu(string username, string password){
@@ -214,7 +219,7 @@ class Program{
         }
         else if(menuIndex == 2)
         {
-            ReadUserInfo();
+            WriteUserList();
         }
         
     }
@@ -235,15 +240,24 @@ class Program{
             Console.WriteLine(line);
         }
 
+        NewMenu();
     }
     static void WriteUserList(){
-        Console.Write("Input csv file path to write: ");
+        Console.Clear();
+        Console.WriteLine("BlackList Program");
+        Console.Write("Please input csv file path to write: ");
         string csvFilePath = Console.ReadLine();
 
-        List<string>lines = new List<string>();
-        list.FetchUser();
-        File.WriteAllLines(csvFilePath, lines);
+        Console.WriteLine("Input number of user to add :");
+        int num = int.Parse(Console.ReadLine());
+
+
+        List<string> lines = new List<string>();
         
+        lines.Add(CsvUser.InputPersonInfo());
+        while(num > 0){
+        File.WriteAllLines(csvFilePath, lines);
+        }
         NewMenu();
     }
     //GetinPut Part
@@ -282,6 +296,7 @@ class Program{
         back = Console.ReadLine();
         PrintMenu();
     }
+
     static void ShowTextBook(){
         Console.WriteLine("---------- Textbook ----------");
         Console.WriteLine("1. T001 Calculus");
@@ -357,4 +372,9 @@ class Program{
             DateInform();
         }
     }
+
+
+
+    
+    
 }

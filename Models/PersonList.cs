@@ -70,27 +70,19 @@ class PersonList{
         return CheckStatus(username,password);
     }
 
-    public void RentInfo(){
-        int count = 0;
-
-        if(borrowinfo.Count == 0){
-            Console.WriteLine("No Rent Book Infomation");
-        } else if(borrowinfo.Count > 0){
-            foreach(BorrowBook borrowinfo in borrowinfo){
-               Console.WriteLine("{0}",borrowinfo.GetUsername(),borrowinfo.GetSerialNumber());
-            }
-        }
-    }
-
     public void FetchUser(){
         int count = 0;
         foreach(Person person in personList){
             count++;
             if(person is Customer customer){
-                Console.WriteLine("{0},  {1} class: {2}",count,customer.GetUsername(),customer.GetName());
+                Console.WriteLine("{0}, Name {1} surname : {2}",count,customer.GetUsername(),customer.GetName());
             }
         }
     }
+
+
+
+    
 
 
 
