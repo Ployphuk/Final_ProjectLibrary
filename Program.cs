@@ -82,6 +82,7 @@ class Program{
         }
     }
     
+    ////register
     static void CreateCustomerAccout(){
         Console.Clear();
 
@@ -123,6 +124,9 @@ class Program{
         
     }
 
+
+    //login
+
     static void PrintLogin(){
         Console.Clear();
         Console.WriteLine("Log in Part");
@@ -141,9 +145,8 @@ class Program{
         }
     }
 
-    
+    //shoppart
 
-    // InfomationPart**********
      static void CustomerMenu(string username, string password){
         Console.Clear();
         Console.WriteLine("Welcone to our shop");
@@ -168,6 +171,8 @@ class Program{
         }
      }
 
+
+    //calculateday
     static void DateInform(){
         Console.WriteLine("Choose day to use");
         Console.WriteLine(" Press 1 : 7 days");
@@ -205,6 +210,7 @@ class Program{
         }
     }
 
+  //adminmenu
     static void AdminMenu(string username, string password){
         Console.WriteLine("---------- Admin Menu ----------");
         Console.WriteLine("1. Read CSV");
@@ -224,6 +230,7 @@ class Program{
         
     }
 
+    //csv
     static void UserList(){
         Console.Clear();
         list.FetchUser();
@@ -260,6 +267,9 @@ class Program{
         }
         NewMenu();
     }
+
+
+
     //GetinPut Part
     static string GetInputUserName(){
         Console.Write("Input username : ");
@@ -290,6 +300,7 @@ class Program{
         Program.list = new PersonList();
     }
 
+    //infomation
     static void NewMenu(){
         string back;
         Console.WriteLine(" Enter to Back to MainMenu ");
