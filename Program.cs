@@ -1,7 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Drawing;
-
 enum MenuMain{
     Register = 1,
     Login = 2,
