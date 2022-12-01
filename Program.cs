@@ -139,8 +139,10 @@ class Program{
                 
             }else if(list.CheckStatus(username,password) == true){
                 AdminMenu(username,password);
-            }
+            } 
         }
+        Console.WriteLine("Worng infomation");
+        NewMenu();
     }
 
     //shoppart
